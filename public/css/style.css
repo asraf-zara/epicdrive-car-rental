@@ -650,3 +650,202 @@ button { cursor: pointer; }
   .hero-fleet-stack::after,
   .fleet-car-stage::after { animation:none !important; transition:none !important; }
 }
+
+/* ===== Hero Fleet Visibility Fix =====
+   Keep all three cars fully visible and equally presented. */
+.hero-car-zone {
+  min-height: 520px;
+}
+
+.hero-fleet-stack {
+  position: relative;
+  width: min(100%, 940px);
+  min-height: 440px;
+  padding: 60px 22px 26px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: center;
+}
+
+.hero-fleet-stack::before {
+  inset: 28px 0 0;
+  border-radius: 36px;
+}
+
+.hero-stack-kicker {
+  top: 10px;
+  left: 24px;
+  z-index: 6;
+}
+
+.hero-stack,
+.hero-stack-main,
+.hero-stack-left,
+.hero-stack-right {
+  position: relative;
+  inset: auto;
+  left: auto;
+  right: auto;
+  top: auto;
+  bottom: auto;
+  width: 100%;
+  min-width: 0;
+  height: 300px;
+  z-index: 2;
+  transform: none;
+  border-radius: 24px;
+  padding: 14px 14px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.hero-stack-main { z-index: 3; }
+
+.hero-stack img,
+.hero-stack-main img,
+.hero-stack-left img,
+.hero-stack-right img {
+  width: 100%;
+  height: 235px;
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 16px;
+}
+
+.hero-stack small {
+  margin-top: 8px;
+  min-height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+
+/* same subtle motion for every car — no rotated/cropped cards */
+.hero-stack-main,
+.hero-stack-left,
+.hero-stack-right {
+  animation: heroFloatVisible 5.2s ease-in-out infinite;
+}
+.hero-stack-left { animation-delay: -.8s; }
+.hero-stack-right { animation-delay: -1.6s; }
+
+@keyframes heroFloatVisible {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+.hero-fleet-stack::after {
+  left: 6%;
+  right: 6%;
+  bottom: 7%;
+  z-index: 0;
+}
+
+@media (max-width: 1180px) {
+  .hero-fleet-stack {
+    gap: 12px;
+    padding-inline: 12px;
+  }
+  .hero-stack,
+  .hero-stack-main,
+  .hero-stack-left,
+  .hero-stack-right {
+    height: 270px;
+    padding: 12px;
+  }
+  .hero-stack img,
+  .hero-stack-main img,
+  .hero-stack-left img,
+  .hero-stack-right img {
+    height: 207px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .hero-car-zone { min-height: 430px; }
+  .hero-fleet-stack {
+    width: min(100%, 900px);
+    min-height: 390px;
+    padding-top: 52px;
+  }
+  .hero-stack,
+  .hero-stack-main,
+  .hero-stack-left,
+  .hero-stack-right {
+    height: 285px;
+  }
+  .hero-stack img,
+  .hero-stack-main img,
+  .hero-stack-left img,
+  .hero-stack-right img {
+    height: 220px;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-car-zone { min-height: 300px; }
+  .hero-fleet-stack {
+    min-height: 280px;
+    padding: 42px 5px 12px;
+    gap: 7px;
+  }
+  .hero-fleet-stack::before {
+    inset: 22px 0 0;
+    border-radius: 22px;
+  }
+  .hero-stack-kicker {
+    top: 4px;
+    left: 10px;
+    font-size: 8px;
+  }
+  .hero-stack,
+  .hero-stack-main,
+  .hero-stack-left,
+  .hero-stack-right {
+    width: 100%;
+    height: 205px;
+    padding: 7px 7px 8px;
+    border-radius: 15px;
+  }
+  .hero-stack img,
+  .hero-stack-main img,
+  .hero-stack-left img,
+  .hero-stack-right img {
+    height: 155px;
+    border-radius: 10px;
+  }
+  .hero-stack small {
+    min-height: 24px;
+    margin-top: 4px;
+    font-size: 10px;
+    line-height: 1.15;
+  }
+}
+
+@media (max-width: 460px) {
+  .hero-car-zone { min-height: 260px; }
+  .hero-fleet-stack {
+    min-height: 245px;
+    padding-top: 36px;
+    gap: 5px;
+  }
+  .hero-stack,
+  .hero-stack-main,
+  .hero-stack-left,
+  .hero-stack-right {
+    height: 176px;
+    padding: 5px;
+  }
+  .hero-stack img,
+  .hero-stack-main img,
+  .hero-stack-left img,
+  .hero-stack-right img {
+    height: 130px;
+  }
+  .hero-stack small { font-size: 9px; }
+}
