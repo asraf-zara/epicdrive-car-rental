@@ -1,0 +1,32 @@
+<div class="booking-overlay" id="bookingOverlay" aria-hidden="true"></div>
+<aside class="booking-panel" id="bookingPanel" aria-hidden="true" aria-label="Booking contact panel">
+  <div class="booking-panel-top">
+    <div>
+      <span class="eyebrow">EPICDRIVE</span>
+      <h2>Book your drive.</h2>
+    </div>
+    <button class="booking-close" id="bookingClose" aria-label="Close booking panel">×</button>
+  </div>
+
+  <div class="booking-selected-card">
+    <span class="booking-label">Selected vehicle</span>
+    <strong id="bookingCarName">General Booking</strong>
+    <span id="bookingCarPrice">Choose your vehicle</span>
+  </div>
+
+  <p class="booking-copy">Contact us directly and we will confirm availability, rental details and pickup arrangements.</p>
+
+  <div class="booking-contact-number">
+    <small>Contact number</small>
+    <strong><%= site.phone %></strong>
+  </div>
+
+  <a class="button button-primary button-full" id="bookingCallBtn" href="tel:<%= site.phoneLink %>">
+    Call Now
+  </a>
+  <a class="button button-whatsapp button-full" id="bookingWhatsappBtn" href="#" target="_blank" rel="noopener">
+    WhatsApp
+  </a>
+
+  <p class="booking-note">No online payment required. Confirm directly with EPICDRIVE.</p>
+</aside>

@@ -1,0 +1,77 @@
+<main class="car-detail-page">
+  <section class="car-detail-hero">
+    <div class="detail-grid container">
+      <div class="detail-copy reveal">
+        <a class="back-link" href="/cars">← Back to cars</a>
+        <span class="eyebrow"><%= car.category %> Collection</span>
+        <p class="detail-brand"><%= car.brand %></p>
+        <h1><%= car.name %></h1>
+        <p class="detail-tagline"><%= car.tagline %></p>
+        <p class="detail-description"><%= car.description %></p>
+
+        <div class="detail-price-block">
+          <span>Rental rate</span>
+          <strong><%= car.price %></strong>
+        </div>
+
+        <div class="hero-actions">
+          <button class="button button-primary js-open-booking" data-car="<%= car.brand %> <%= car.name %>" data-price="<%= car.price %>">Book This Car</button>
+          <a class="button button-ghost" href="/contact">Ask a Question</a>
+        </div>
+      </div>
+
+      <div class="detail-visual reveal car-parallax" data-depth="18">
+        <div class="detail-orbit"></div>
+        <div class="detail-image-stage <%= car.accent === 'blue' ? 'blue-stage' : '' %>">
+          <img src="<%= car.image %>" alt="<%= car.brand %> <%= car.name %>" />
+        </div>
+        <span class="detail-index">0<%= cars.findIndex(c => c.slug === car.slug) + 1 %></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="spec-strip">
+    <div class="container spec-grid reveal">
+      <div><span>Transmission</span><strong><%= car.transmission %></strong></div>
+      <div><span>Capacity</span><strong><%= car.seats %></strong></div>
+      <div><span>Fuel</span><strong><%= car.fuel %></strong></div>
+      <div><span>Comfort</span><strong><%= car.aircon %></strong></div>
+    </div>
+  </section>
+
+  <section class="detail-story section-padding">
+    <div class="container story-grid">
+      <div class="story-heading reveal">
+        <span class="eyebrow">Why this car</span>
+        <h2>Made for the way you travel.</h2>
+      </div>
+      <div class="story-cards">
+        <article class="feature-card reveal">
+          <span>01</span>
+          <h3>Comfort First</h3>
+          <p>A clean, comfortable cabin for city drives, business trips and family journeys.</p>
+        </article>
+        <article class="feature-card reveal">
+          <span>02</span>
+          <h3>Easy Booking</h3>
+          <p>No complicated checkout. Choose the vehicle and contact EPICDRIVE directly.</p>
+        </article>
+        <article class="feature-card reveal">
+          <span>03</span>
+          <h3>Direct Support</h3>
+          <p>Call or WhatsApp us to confirm availability and rental arrangements quickly.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta section-padding">
+    <div class="container final-cta-inner reveal">
+      <div>
+        <span class="eyebrow">Ready when you are</span>
+        <h2>Take the <%= car.name %> on your next drive.</h2>
+      </div>
+      <button class="button button-light js-open-booking" data-car="<%= car.brand %> <%= car.name %>" data-price="<%= car.price %>">Book This Car</button>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,45 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<main>
+  <section class="page-hero page-hero-cars">
+    <div class="container page-hero-inner reveal">
+      <span class="eyebrow">EPICDRIVE fleet</span>
+      <h1>Three cars.<br /><span>Three ways to move.</span></h1>
+      <p>From everyday city driving to spacious family travel and premium comfort.</p>
+    </div>
+  </section>
+
+  <section class="catalog-section section-padding">
+    <div class="container catalog-grid">
+      <% cars.forEach((car, index) => { %>
+        <article class="catalog-card reveal">
+          <div class="catalog-topline"><span>0<%= index + 1 %></span><span><%= car.category %></span></div>
+          <div class="catalog-image-wrap car-parallax" data-depth="12">
+            <img src="<%= car.image %>" alt="<%= car.brand %> <%= car.name %>" />
+          </div>
+          <p class="catalog-brand"><%= car.brand %></p>
+          <h2><%= car.name %></h2>
+          <p><%= car.tagline %></p>
+          <div class="catalog-specs"><span><%= car.seats %></span><span><%= car.transmission %></span><span><%= car.fuel %></span></div>
+          <div class="catalog-bottom">
+            <strong><%= car.price %></strong>
+            <div>
+              <a class="button button-dark" href="/cars/<%= car.slug %>">View</a>
+              <button class="button button-primary js-open-booking" data-car="<%= car.brand %> <%= car.name %>" data-price="<%= car.price %>">Book</button>
+            </div>
+          </div>
+        </article>
+      <% }) %>
+    </div>
+  </section>
+
+  <section class="final-cta section-padding">
+    <div class="container final-cta-inner reveal">
+      <div><span class="eyebrow">Need help choosing?</span><h2>Tell us what kind of trip you're planning.</h2></div>
+      <a class="button button-light" href="/contact">Contact EPICDRIVE</a>
+    </div>
+  </section>
+</main>
+
+<%- include('partials/footer') %>

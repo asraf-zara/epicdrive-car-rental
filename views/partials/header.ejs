@@ -1,0 +1,30 @@
+<header class="site-header" id="siteHeader">
+  <div class="nav-shell">
+    <a href="/" class="brand" aria-label="EPICDRIVE Home">
+      <img src="/images/epicdrive-logo.png" alt="EPICDRIVE Car Rentals" class="brand-logo" />
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a class="<%= currentPath === '/' ? 'active' : '' %>" href="/">Home</a>
+      <a class="<%= currentPath.startsWith('/cars') ? 'active' : '' %>" href="/cars">Cars</a>
+      <a class="<%= currentPath === '/how-it-works' ? 'active' : '' %>" href="/how-it-works">How It Works</a>
+      <a class="<%= currentPath === '/contact' ? 'active' : '' %>" href="/contact">Contact</a>
+    </nav>
+
+    <button class="nav-book-btn js-open-booking" data-car="General Booking" data-price="Choose your vehicle">
+      Book a Car
+    </button>
+
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="/">Home</a>
+    <a href="/cars">Cars</a>
+    <a href="/how-it-works">How It Works</a>
+    <a href="/contact">Contact</a>
+    <button class="button button-primary js-open-booking" data-car="General Booking" data-price="Choose your vehicle">Book a Car</button>
+  </div>
+</header>

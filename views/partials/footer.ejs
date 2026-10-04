@@ -1,0 +1,38 @@
+<footer class="site-footer">
+  <div class="footer-top container">
+    <div class="footer-brand-block">
+      <img src="/images/epicdrive-logo.png" alt="EPICDRIVE" class="footer-logo" />
+      <p>Modern car rental, direct booking and a smoother way to start your journey.</p>
+    </div>
+
+    <div class="footer-links">
+      <div>
+        <h4>Explore</h4>
+        <a href="/">Home</a>
+        <a href="/cars">Cars</a>
+        <a href="/how-it-works">How It Works</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="tel:<%= site.phoneLink %>"><%= site.phone %></a>
+        <span><%= site.location %></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom container">
+    <span>© <span id="currentYear"></span> EPICDRIVE Car Rentals</span>
+    <span>Drive more. Experience more.</span>
+  </div>
+</footer>
+
+<%- include('booking-panel') %>
+<script>
+  window.EPICDRIVE = {
+    whatsappNumber: '<%= site.whatsapp %>',
+    phone: '<%= site.phone %>'
+  };
+</script>
+<script src="/js/main.js"></script>
+</body>
+</html>

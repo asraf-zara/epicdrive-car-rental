@@ -1,0 +1,133 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<div class="intro-screen" id="introScreen">
+  <div class="intro-line"></div>
+  <img src="/images/epicdrive-logo.png" alt="EPICDRIVE" class="intro-logo" />
+  <p>Drive more. Experience more.</p>
+  <button id="skipIntro" class="intro-skip">Enter</button>
+</div>
+
+<main>
+  <section class="hero-section">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-red-glow"></div>
+    <div class="container hero-layout">
+      <div class="hero-copy reveal">
+        <span class="eyebrow">EPICDRIVE Car Rentals</span>
+        <h1>Book your drive.<br /><span>Feel at home on every road.</span></h1>
+        <p>From quick city trips to comfortable family journeys, choose the right car and book directly with EPICDRIVE by phone or WhatsApp.</p>
+        <div class="hero-quote-row">
+          <span>Drive it like it’s yours</span>
+          <span>Comfort for every journey</span>
+        </div>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#fleet">Explore Cars</a>
+          <button class="button button-ghost js-open-booking" data-car="General Booking" data-price="Choose your vehicle">Book a Car</button>
+        </div>
+        <div class="hero-mini-stats">
+          <div><strong>03</strong><span>Available Cars</span></div>
+          <div><strong>Easy</strong><span>Direct Booking</span></div>
+          <div><strong>Call / WA</strong><span>Fast Contact</span></div>
+        </div>
+      </div>
+
+      <div class="hero-car-zone reveal">
+        <div class="hero-number">03</div>
+        <div class="hero-fleet-stack">
+          <span class="hero-stack-kicker">Available Fleet</span>
+          <div class="hero-stack hero-stack-left car-parallax" data-depth="8">
+            <img src="/images/baleno.png" alt="Suzuki Baleno" />
+            <small>Baleno</small>
+          </div>
+          <div class="hero-stack hero-stack-main car-parallax" data-depth="10">
+            <img src="/images/carens-clavis.png" alt="Kia Carens Clavis" />
+            <small>Kia Carens Clavis</small>
+          </div>
+          <div class="hero-stack hero-stack-right car-parallax" data-depth="8">
+            <img src="/images/ertiga.png" alt="Suzuki Ertiga" />
+            <small>Ertiga</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a class="scroll-cue" href="#fleet"><span></span> Scroll to explore</a>
+  </section>
+
+  <section class="fleet-section section-padding" id="fleet">
+    <div class="container">
+      <div class="section-heading reveal">
+        <div>
+          <span class="eyebrow">Our collection</span>
+          <h2>Three cars. One easy choice.</h2>
+        </div>
+        <p>City driving, family space, or premium comfort — choose the one that fits your trip.</p>
+      </div>
+
+      <div class="fleet-tabs reveal" role="tablist">
+        <% cars.forEach((car, index) => { %>
+          <button class="fleet-tab <%= index === 0 ? 'active' : '' %>" data-car-index="<%= index %>">
+            <span>0<%= index + 1 %></span>
+            <div><strong><%= car.name %></strong><small><%= car.category %></small></div>
+          </button>
+        <% }) %>
+      </div>
+
+      <div class="fleet-showcase reveal" id="fleetShowcase">
+        <div class="fleet-info">
+          <span class="fleet-category" id="fleetCategory"><%= cars[0].category %></span>
+          <p class="fleet-brand" id="fleetBrand"><%= cars[0].brand %></p>
+          <h3 id="fleetName"><%= cars[0].name %></h3>
+          <p id="fleetTagline"><%= cars[0].tagline %></p>
+          <div class="fleet-specs" id="fleetSpecs">
+            <span><%= cars[0].seats %></span>
+            <span><%= cars[0].transmission %></span>
+            <span><%= cars[0].fuel %></span>
+          </div>
+          <strong class="fleet-price" id="fleetPrice"><%= cars[0].price %></strong>
+          <div class="hero-actions">
+            <a class="button button-dark" id="fleetViewLink" href="/cars/<%= cars[0].slug %>">View Car</a>
+            <button class="button button-primary js-open-booking" id="fleetBookBtn" data-car="<%= cars[0].brand %> <%= cars[0].name %>" data-price="<%= cars[0].price %>">Book Now</button>
+          </div>
+        </div>
+        <div class="fleet-car-stage" id="fleetCarStage">
+          <div class="fleet-stage-line"></div>
+          <img id="fleetCarImage" src="<%= cars[0].image %>" alt="<%= cars[0].name %>" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process-section section-padding">
+    <div class="container">
+      <div class="section-heading reveal">
+        <div>
+          <span class="eyebrow">Simple by design</span>
+          <h2>Rent in three steps.</h2>
+        </div>
+        <a class="text-link" href="/how-it-works">See the full process →</a>
+      </div>
+
+      <div class="process-grid">
+        <article class="process-card reveal"><span>01</span><h3>Choose</h3><p>Select Baleno, Ertiga or Kia Carens Clavis.</p></article>
+        <article class="process-card reveal"><span>02</span><h3>Contact</h3><p>Open the booking panel and call or WhatsApp us directly.</p></article>
+        <article class="process-card reveal"><span>03</span><h3>Drive</h3><p>Confirm availability and enjoy your journey with EPICDRIVE.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta section-padding">
+    <div class="container final-cta-inner reveal">
+      <div>
+        <span class="eyebrow">Your next drive starts here</span>
+        <h2>Ready to book your next ride?</h2>
+      </div>
+      <button class="button button-light js-open-booking" data-car="General Booking" data-price="Choose your vehicle">Book a Car</button>
+    </div>
+  </section>
+</main>
+<script>
+  window.CAR_DATA = <%- JSON.stringify(cars) %>;
+</script>
+<%- include('partials/footer') %>
