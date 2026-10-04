@@ -131,11 +131,12 @@ app.use((req, res) => {
   res.status(404).render('404', { pageTitle: 'Page Not Found' });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log('');
   console.log('=============================================');
   console.log('  EPICDRIVE Car Rentals is running');
-  console.log(`  http://localhost:${PORT}`);
+  console.log(`  Port: ${PORT}`);
+  console.log('  Host: 0.0.0.0');
   console.log('=============================================');
   console.log('');
 });
